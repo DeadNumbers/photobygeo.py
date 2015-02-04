@@ -18,5 +18,10 @@ If you want to parse instagram, you should set **instagram_access_token**. Witho
 
 All results saves to HTML file.
 
+The console log:
+
+![screenshot.png](https://bitbucket.org/repo/KerG5L/images/417140315-screenshot.png)
+
 The result looks like this:
 
+![screenshot2.png](https://bitbucket.org/repo/KerG5L/images/3473396433-screenshot2.png)
