@@ -14,7 +14,7 @@ DATE_INCREMENT = 60*60*24
 INSTAGRAM_ACCESS_TOKEN = 'YOUR_INSTAGRAM_TOKEN'
 ```
 
-If you want to parse instagram, you should set **instagram_access_token**. Without access_token program parses VK only.
+If you want to parse instagram, you should set **INSTAGRAM_ACCESS_TOKE**. Without access_token program parses VK only.
 
 All results saves to HTML file.
 
