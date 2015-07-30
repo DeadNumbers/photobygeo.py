@@ -16,11 +16,11 @@ All results saves to HTML file.
 
 The console log:
 
-![Screenshot - 30.07.2015 - 23:39:22.png](https://bitbucket.org/repo/KerG5L/images/2567708143-Screenshot%20-%2030.07.2015%20-%2023:39:22.png)
+![1.png](https://bitbucket.org/repo/KerG5L/images/3709769959-1.png)
 
 The console help:
 
-![Screenshot - 30.07.2015 - 23:40:23.png](https://bitbucket.org/repo/KerG5L/images/1732271198-Screenshot%20-%2030.07.2015%20-%2023:40:23.png)
+![2.png](https://bitbucket.org/repo/KerG5L/images/2817277897-2.png)
 
 The result looks like this:
 
