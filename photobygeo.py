@@ -1,22 +1,24 @@
 """
 Author: 	Betepok
-Version:	1.01
-Date:		15.04.2015
-Twitter:	http://twitter.com/BetepO_ok
+Version:	1.2.01
+Date:		30.07.2015
+Twitter:	https://twitter.com/BetepO_ok
+Bitbucket:  https://bitbucket.org/BetepokNoname
 
 """
 
+VERSION = '1.2.01 (30.07.2015)'
+AUTHOR = 'Betepok (https://twitter.com/BetepO_ok)'
+
 from datetime import datetime
 from requests import get as getResponse
+from argparse import ArgumentParser, RawDescriptionHelpFormatter
+from textwrap import dedent
 
 
-LOCATION_LATITUDE = '55.740701'
-LOCATION_LONGITUDE = '37.609161'
-DISTANCE = '100'
-MIN_TIMESTAMP = 1400619600
-MAX_TIMESTAMP = 1400792400
-DATE_INCREMENT = 60*60*24
 INSTAGRAM_ACCESS_TOKEN = 'YOUR_INSTAGRAM_TOKEN'
+DISTANCE = '100'
+TIME_INCREMENT = 60*60*24
 
 
 def getInstagram(latitude, longitude, distance, minTimestamp, maxTimestamp):
@@ -53,9 +55,7 @@ def parseInstagram(latitude, longitude, distance, minTimestamp, maxTimestamp, da
 	if INSTAGRAM_ACCESS_TOKEN == 'YOUR_INSTAGRAM_TOKEN':
 		print 'You should add your instagram access token'
 		return
-	print 'Starting parse instagram..'
-	print 'GEO:', latitude, longitude
-	print 'TIME: from', convertTSToDate(minTimestamp), 'to', convertTSToDate(maxTimestamp)
+	print 'Parsing instagram..'
 	fileDescriptor = open('instagram_' + latitude + longitude + '.html', 'w')
 	fileDescriptor.write('<html>')
 	localMinTimestamp = minTimestamp
@@ -79,9 +79,7 @@ def parseInstagram(latitude, longitude, distance, minTimestamp, maxTimestamp, da
 
 
 def parseVK(latitude, longitude, distance, minTimestamp, maxTimestamp, dateIncrement):
-	print 'Starting parse vkontakte..'
-	print 'GEO:', latitude, longitude
-	print 'TIME: from', convertTSToDate(minTimestamp), 'to', convertTSToDate(maxTimestamp)
+	print 'Parsing vkontakte..'
 	fileDescriptor = open('vk_' + latitude + longitude + '.html', 'w')
 	fileDescriptor.write('<html>')
 	localMinTimestamp = minTimestamp
@@ -106,5 +104,61 @@ def parseVK(latitude, longitude, distance, minTimestamp, maxTimestamp, dateIncre
 	fileDescriptor.close()
 
 
-parseInstagram(LOCATION_LATITUDE, LOCATION_LONGITUDE, DISTANCE, MIN_TIMESTAMP, MAX_TIMESTAMP, DATE_INCREMENT)
-parseVK(LOCATION_LATITUDE, LOCATION_LONGITUDE, DISTANCE, MIN_TIMESTAMP, MAX_TIMESTAMP, DATE_INCREMENT)
+def main():
+	global INSTAGRAM_ACCESS_TOKEN
+	global DISTANCE
+	global TIME_INCREMENT
+	global VERSION
+	global AUTHOR
+	INFO = dedent('''
+	-------- example --------
+
+	python photobygeo.py 55.740701 37.609161 1400619600 1400792400
+
+	-------- about ----------
+
+	Parsing photos from Instagram and VK by geographic coordinates.
+	Version: %s
+	Author: %s
+
+	-------- arguments ------
+	''' % (VERSION, AUTHOR))
+	parser = ArgumentParser(description=INFO,
+		formatter_class=RawDescriptionHelpFormatter)
+	parser.add_argument("latitude", type=str,
+		help="Geographic latitude")
+	parser.add_argument("longitude", type=str,
+		help="Geographic longitude")
+	parser.add_argument("min_timestamp", type=int,
+		help="Start the search from this timestamp")
+	parser.add_argument("max_timestamp", type=int,
+		help="Finish the search in this timestamp")
+	parser.add_argument("-d", "--distance", action="store",
+		help="Distance for search (meters). Default: %s" % DISTANCE)
+	parser.add_argument("-i", "--increment", action="store",
+		help="Time increment for search (seconds). Default: %d" % TIME_INCREMENT)
+	args = parser.parse_args()
+	if args.distance:
+		DISTANCE = args.distance
+	if args.increment:
+		TIME_INCREMENT = args.increment
+	print 'GEO:', args.latitude, args.longitude
+	print 'TIME: from', convertTSToDate(args.min_timestamp), 'to', convertTSToDate(args.max_timestamp)
+	print 'DISTANCE: %s' % DISTANCE
+	print 'TIME INCREMENT: %d' % TIME_INCREMENT
+	parseInstagram(args.latitude, 
+		args.longitude, 
+		DISTANCE, 
+		args.min_timestamp, 
+		args.max_timestamp, 
+		TIME_INCREMENT)
+	parseVK(args.latitude, 
+		args.longitude, 
+		DISTANCE, 
+		args.min_timestamp, 
+		args.max_timestamp, 
+		TIME_INCREMENT)
+
+
+if __name__ == "__main__":
+    main()
