@@ -14,6 +14,10 @@ If you want to parse instagram, you should set **INSTAGRAM_ACCESS_TOKE**. Withou
 
 All results saves to HTML file.
 
+Example:
+
+**python photobygeo.py 55.740701 37.609161 1400619600 1400792400**
+
 The console log:
 
 ![1.png](https://bitbucket.org/repo/KerG5L/images/3709769959-1.png)
