@@ -3,7 +3,7 @@ Author: 	Betepok
 Version:	1.2.01
 Date:		30.07.2015
 Twitter:	https://twitter.com/BetepO_ok
-Bitbucket:  https://bitbucket.org/BetepokNoname
+Bitbucket:	https://bitbucket.org/BetepokNoname
 
 """
 
