@@ -10,7 +10,7 @@ DISTANCE = '100'
 TIME_INCREMENT = 60*60*24
 ```
 
-If you want to parse instagram, you should set **INSTAGRAM_ACCESS_TOKE**. Without access_token program parses VK only.
+If you want to parse instagram, you should set **INSTAGRAM_ACCESS_TOKEN**. Without access_token program parses VK only.
 
 All results saves to HTML file.
 
