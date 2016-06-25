@@ -35,3 +35,12 @@ The console help:
 The result looks like this:
 
 ![screenshot2.png](https://bitbucket.org/repo/KerG5L/images/3473396433-screenshot2.png)
+
+!26.06.2016 UPDATED!
+
+If you have problems with parsing of instgram, it may be troubles with permissions. Try this:
+Just open this link:
+
+https://www.instagram.com/oauth/authorize/?client_id=[CLIENT_ID]&redirect_uri=http://localhost/&response_type=code&scope=public_content
+
+* change [CLIENT_ID] to your client id
