@@ -40,6 +40,6 @@ The result looks like this:
 
 If you have problems with parsing of instgram, it may be troubles with permissions. For solving problem just open this link:
 
-https://www.instagram.com/oauth/authorize/?client_id=[CLIENT_ID]&redirect_uri=http://localhost/&response_type=code&scope=public_content
+https://www.instagram.com/oauth/authorize/?client_id=[CLIENT_ID]&redirect_uri=http://localhost/&response_type=token&scope=public_content
 
 * change [CLIENT_ID] to your client id
